@@ -1,0 +1,163 @@
+openapi: 3.0.3
+info:
+  title: AvaliacaoDev7payJava
+  description: AvaliacaoDev7payJava
+  version: 1.0.0
+servers:
+  - url: 'http://localhost'
+paths:
+  /despesa/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+    delete:
+      description: New endpoint
+      responses:
+        204:
+          description: New response
+    put:
+      description: New endpoint
+      responses:
+        200:
+          description: New response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Despesa"
+    get:
+      description: New endpoint
+      responses:
+        200:
+          description: New response
+          content:
+            application/json:
+              schema:
+                $ref : "#/components/schemas/Despesa"
+  /despesas:
+    post:
+      description: Cria uma nova despesa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Despesa"
+      responses:
+        200:
+          description: New response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Despesa"
+    get:
+      parameters:
+        - name: page
+          in: query
+        - name: page_size
+          in: query
+        - name: order_by
+          in: query
+        - name: order
+          in: query
+      description: Lista com todas as despesas
+      responses:
+        200:
+          description: New response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListaDeDespesas"
+components:
+  schemas:
+    ListaDeDespesas:
+      type: object
+      properties:
+        despesas:
+          type: array
+          items:
+            type: object
+            $ref: "#/components/schemas/Despesa"
+    Despesa:
+      type: object
+      properties:
+        _id:
+          type: number
+          readOnly: true
+        ano_movimentacao:
+          type: number
+        mes_movimentacao:
+          type: number
+        orgao_codigo:
+          type: number
+        orgao_nome:
+          type: string
+        unidade_codigo:
+          type: number
+        unidade_nome:
+          type: string
+        categoria_economica_codigo:
+          type: number
+        categoria_economica_nome:
+          type: string
+        grupo_despesa_codigo:
+          type: number
+        grupo_despesa_nome:
+          type: string
+        modalidade_aplicacao_codigo:
+          type: number
+        modalidade_aplicacao_nome:
+          type: string
+        elemento_codigo:
+          type: number
+        elemento_nome:
+          type: string
+        subelemento_codigo:
+          type: number
+        subelemento_nome:
+          type: string
+        funcao_codigo:
+          type: number
+        funcao_nome:
+          type: string
+        subfuncao_codigo:
+          type: number
+        subfuncao_nome:
+          type: string
+        programa_codigo:
+          type: number
+        programa_nome:
+          type: string
+        acao_codigo:
+          type: number
+        acao_nome:
+          type: string
+        fonte_recurso_codigo:
+          type: number
+        fonte_recurso_nome:
+          type: string
+        empenho_ano:
+          type: number
+        empenho_modalidade_nome:
+          type: string
+        empenho_modalidade_codigo:
+          type: number
+        empenho_numero:
+          type: number
+        subempenho:
+          type: number
+        indicador_subempenho:
+          type: string
+        credor_codigo:
+          type: number
+        credor_nome:
+          type: string
+        modalidade_licitacao_codigo:
+          type: number
+        modalidade_licitacao_nome:
+          type: string
+        valor_empenhado:
+          type: string
+        valor_liquidado:
+          type: string
+        valor_pago:
+          type: string
