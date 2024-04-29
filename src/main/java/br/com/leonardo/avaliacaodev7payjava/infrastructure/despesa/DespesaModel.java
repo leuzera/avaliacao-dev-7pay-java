@@ -1,4 +1,4 @@
-package br.com.leonardo.avaliacaodev7payjava.infrastructure.Despesa;
+package br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -130,4 +130,49 @@ public class DespesaModel {
 
     @Column
     String valorPago;
+
+    public DespesaDto toDto() {
+        return new DespesaDto(
+                id,
+                anoMovimentacao,
+                mesMovimentacao,
+                orgaoCodigo,
+                orgaoNome,
+                unidadeCodigo,
+                unidadeNome,
+                categoriaEconomicaCodigo,
+                categoriaEconomicaNome,
+                grupoDespesaCodigo,
+                grupoDespesaNome,
+                modalidadeAplicacaoCodigo,
+                modalidadeAplicacaoNome,
+                elementoCodigo,
+                elementoNome,
+                subelementoCodigo,
+                subelementoNome,
+                funcaoCodigo,
+                funcaoNome,
+                subfuncaoCodigo,
+                subfuncaoNome,
+                programaCodigo,
+                programaNome,
+                acaoCodigo,
+                acaoNome,
+                fonteRecursoCodigo,
+                fonteRecursoNome,
+                empenhoAno,
+                empenhoModalidadeNome,
+                empenhoModalidadeCodigo,
+                empenhoNumero,
+                subempenho,
+                indicadorSubempenho,
+                credorCodigo,
+                credorNome,
+                modalidadeLicitacaoCodigo,
+                modalidadeLicitacaoNome,
+                valorEmpenhado,
+                valorLiquidado,
+                valorPago
+        );
+    }
 }
