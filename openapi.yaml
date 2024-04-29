@@ -6,7 +6,7 @@ info:
 servers:
   - url: 'http://localhost'
 paths:
-  /despesa/{id}:
+  /despesas/{id}:
     parameters:
       - name: id
         in: path
