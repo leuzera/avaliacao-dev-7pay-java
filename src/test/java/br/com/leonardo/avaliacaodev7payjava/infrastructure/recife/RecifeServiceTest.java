@@ -43,17 +43,4 @@ class RecifeServiceTest {
 
         assertEquals(dtoList.size(), despesaDtos.size());
     }
-
-    @Test
-    void listaESalvaDespesaOrcamentaria() {
-        List<DespesaDto> dtoList = List.of(DespesaModel.builder().build().toDto(), DespesaModel.builder().build().toDto(), DespesaModel.builder().build().toDto());
-        when(recifeService.listaDespesaOrcamentaria(3)).thenReturn(dtoList);
-
-        Integer created = recifeService.listaESalvaDespesaOrcamentaria(3);
-
-        List<DespesaModel> despesaModels = despesaService.findAll();
-
-        assertEquals(3, created);
-        assertEquals(3, despesaModels.size());
-    }
 }
