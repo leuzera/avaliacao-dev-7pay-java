@@ -53,11 +53,11 @@ paths:
       parameters:
         - name: page
           in: query
-        - name: page_size
+        - name: limit
           in: query
-        - name: order_by
+        - name: sortBy
           in: query
-        - name: order
+        - name: direction
           in: query
       description: Lista com todas as despesas
       responses:
@@ -80,7 +80,7 @@ components:
     Despesa:
       type: object
       properties:
-        _id:
+        id:
           type: number
           readOnly: true
         ano_movimentacao:
