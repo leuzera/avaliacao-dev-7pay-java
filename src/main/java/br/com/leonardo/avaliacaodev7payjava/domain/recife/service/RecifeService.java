@@ -1,7 +1,9 @@
-package br.com.leonardo.avaliacaodev7payjava.infrastructure.recife;
+package br.com.leonardo.avaliacaodev7payjava.domain.recife.service;
 
 import br.com.leonardo.avaliacaodev7payjava.domain.despesa.service.DespesaService;
 import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaDto;
+import br.com.leonardo.avaliacaodev7payjava.infrastructure.recife.RecifeApiDto;
+import br.com.leonardo.avaliacaodev7payjava.infrastructure.recife.RecifeWebClient;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;

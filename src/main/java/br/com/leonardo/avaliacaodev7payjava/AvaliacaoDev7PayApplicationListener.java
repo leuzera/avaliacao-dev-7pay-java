@@ -1,6 +1,6 @@
 package br.com.leonardo.avaliacaodev7payjava;
 
-import br.com.leonardo.avaliacaodev7payjava.infrastructure.recife.RecifeService;
+import br.com.leonardo.avaliacaodev7payjava.domain.recife.service.RecifeService;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.annotation.Order;

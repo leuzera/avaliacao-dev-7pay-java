@@ -1,6 +1,6 @@
 package br.com.leonardo.avaliacaodev7payjava.domain.despesa.service;
 
-import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaModel;
+import br.com.leonardo.avaliacaodev7payjava.domain.despesa.entity.Despesa;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,13 +30,13 @@ class DespesaServiceTest {
 
     @Test
     void create() {
-        DespesaModel model = DespesaModel
+        Despesa model = Despesa
                 .builder()
                 .anoMovimentacao(2017)
                 .mesMovimentacao(5)
                 .build();
 
-        DespesaModel created = despesaService.create(model.toDto());
+        Despesa created = despesaService.create(model.toDto());
 
         assertNotNull(created.getId());
         assertEquals(model.getAnoMovimentacao(), created.getAnoMovimentacao());
@@ -45,43 +45,43 @@ class DespesaServiceTest {
 
     @Test
     void findById() {
-        DespesaModel model = DespesaModel.builder().build();
-        DespesaModel created = despesaService.create(model.toDto());
+        Despesa model = Despesa.builder().build();
+        Despesa created = despesaService.create(model.toDto());
 
-        DespesaModel found = despesaService.findById(created.getId());
+        Despesa found = despesaService.findById(created.getId());
 
         assertEquals(created.getId(), found.getId());
     }
 
     @Test
     void findAll() {
-        DespesaModel model = DespesaModel.builder().build();
+        Despesa model = Despesa.builder().build();
         despesaService.create(model.toDto());
-        DespesaModel model2 = DespesaModel.builder().build();
+        Despesa model2 = Despesa.builder().build();
         despesaService.create(model2.toDto());
-        DespesaModel model3 = DespesaModel.builder().build();
+        Despesa model3 = Despesa.builder().build();
         despesaService.create(model3.toDto());
 
-        List<DespesaModel> found = despesaService.findAll(Pageable.unpaged());
+        List<Despesa> found = despesaService.findAll(Pageable.unpaged());
 
         assertEquals(3, found.size());
     }
 
     @Test
     void update() {
-        DespesaModel model = DespesaModel.builder().anoMovimentacao(2015).mesMovimentacao(5).build();
-        DespesaModel created = despesaService.create(model.toDto());
+        Despesa model = Despesa.builder().anoMovimentacao(2015).mesMovimentacao(5).build();
+        Despesa created = despesaService.create(model.toDto());
 
         model.setMesMovimentacao(8);
-        DespesaModel updated = despesaService.update(created.getId(), model.toDto());
+        Despesa updated = despesaService.update(created.getId(), model.toDto());
 
         assertEquals(8, updated.getMesMovimentacao());
     }
 
     @Test
     void delete() {
-        DespesaModel model = DespesaModel.builder().anoMovimentacao(2015).mesMovimentacao(5).build();
-        DespesaModel created = despesaService.create(model.toDto());
+        Despesa model = Despesa.builder().anoMovimentacao(2015).mesMovimentacao(5).build();
+        Despesa created = despesaService.create(model.toDto());
 
         despesaService.delete(created.getId());
 

@@ -2,7 +2,7 @@ package br.com.leonardo.avaliacaodev7payjava.domain.despesa.service;
 
 import br.com.leonardo.avaliacaodev7payjava.domain.despesa.repository.DespesaRepositoryInterface;
 import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaDto;
-import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaModel;
+import br.com.leonardo.avaliacaodev7payjava.domain.despesa.entity.Despesa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,11 +16,11 @@ import java.util.Optional;
 public class DespesaService {
     private final DespesaRepositoryInterface despesaRepository;
 
-    public DespesaModel create(DespesaDto despesa) {
+    public Despesa create(DespesaDto despesa) {
         return despesaRepository.save(despesa.toEntity());
     }
 
-    public DespesaModel update(Integer id, DespesaDto despesa) {
+    public Despesa update(Integer id, DespesaDto despesa) {
         if (!despesaRepository.existsById(id)) {
             throw new NoSuchElementException("Despesa não existe.");
         }
@@ -33,21 +33,21 @@ public class DespesaService {
             return;
         }
 
-        Optional<DespesaModel> despesa = despesaRepository.findById(id);
+        Optional<Despesa> despesa = despesaRepository.findById(id);
         despesaRepository.delete(despesa.orElseThrow());
     }
 
-    public List<DespesaModel> findAll(Pageable paging) {
+    public List<Despesa> findAll(Pageable paging) {
         return despesaRepository.findAll(paging).toList();
     }
 
-    public DespesaModel findById(Integer id) {
-        Optional<DespesaModel> despesa = despesaRepository.findById(id);
+    public Despesa findById(Integer id) {
+        Optional<Despesa> despesa = despesaRepository.findById(id);
         return despesa.orElseThrow();
     }
 
     public Integer createAll(List<DespesaDto> dtoList) {
-        List<DespesaModel> despesaModelStream = dtoList.stream().map(DespesaDto::toEntity).toList();
+        List<Despesa> despesaModelStream = dtoList.stream().map(DespesaDto::toEntity).toList();
         return despesaRepository.saveAll(despesaModelStream).size();
     }
 

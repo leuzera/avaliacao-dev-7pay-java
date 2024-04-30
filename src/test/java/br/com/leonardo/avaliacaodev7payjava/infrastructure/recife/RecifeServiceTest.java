@@ -1,8 +1,9 @@
 package br.com.leonardo.avaliacaodev7payjava.infrastructure.recife;
 
 import br.com.leonardo.avaliacaodev7payjava.domain.despesa.service.DespesaService;
+import br.com.leonardo.avaliacaodev7payjava.domain.recife.service.RecifeService;
 import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaDto;
-import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaModel;
+import br.com.leonardo.avaliacaodev7payjava.domain.despesa.entity.Despesa;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -33,7 +34,7 @@ class RecifeServiceTest {
 
     @Test
     void listaDespesaOrcamentaria() {
-        List<DespesaDto> dtoList = List.of(DespesaModel.builder().build().toDto(), DespesaModel.builder().build().toDto(), DespesaModel.builder().build().toDto());
+        List<DespesaDto> dtoList = List.of(Despesa.builder().build().toDto(), Despesa.builder().build().toDto(), Despesa.builder().build().toDto());
         RecifeApiResultDto result = new RecifeApiResultDto("123", true, 3, 100, dtoList);
         RecifeApiDto recifeApiDto = new RecifeApiDto(true, result);
 

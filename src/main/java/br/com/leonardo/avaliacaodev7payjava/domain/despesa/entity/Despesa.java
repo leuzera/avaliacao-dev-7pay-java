@@ -1,5 +1,6 @@
-package br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa;
+package br.com.leonardo.avaliacaodev7payjava.domain.despesa.entity;
 
+import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Data
-public class DespesaModel {
+public class Despesa {
     @Id
     @GeneratedValue
     private Integer id;

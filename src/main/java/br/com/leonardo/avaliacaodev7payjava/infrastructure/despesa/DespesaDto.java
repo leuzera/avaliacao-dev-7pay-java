@@ -1,12 +1,13 @@
 package br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa;
 
+import br.com.leonardo.avaliacaodev7payjava.domain.despesa.entity.Despesa;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
 /**
- * DTO for {@link DespesaModel}
+ * DTO for {@link Despesa}
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record DespesaDto(
@@ -130,8 +131,8 @@ public record DespesaDto(
         @JsonProperty("valor_pago")
         String valorPago
 ) implements Serializable {
-    public DespesaModel toEntity() {
-        return DespesaModel.builder()
+    public Despesa toEntity() {
+        return Despesa.builder()
                 .anoMovimentacao(this.anoMovimentacao)
                 .mesMovimentacao(this.mesMovimentacao)
                 .orgaoCodigo(this.orgaoCodigo)

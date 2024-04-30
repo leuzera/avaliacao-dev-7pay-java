@@ -2,7 +2,7 @@ package br.com.leonardo.avaliacaodev7payjava.application.despesa;
 
 import br.com.leonardo.avaliacaodev7payjava.domain.despesa.service.DespesaService;
 import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaDto;
-import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaModel;
+import br.com.leonardo.avaliacaodev7payjava.domain.despesa.entity.Despesa;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -32,7 +32,7 @@ public class DespesaController {
     ) {
         Sort sort = Sort.by(direction, sortBy);
         Pageable paging = PageRequest.of(page, limit, sort);
-        List<DespesaDto> dtoList = despesaService.findAll(paging).stream().map(DespesaModel::toDto).toList();
+        List<DespesaDto> dtoList = despesaService.findAll(paging).stream().map(Despesa::toDto).toList();
 
         return ResponseEntity.ok(dtoList);
     }
@@ -40,7 +40,7 @@ public class DespesaController {
     @PostMapping
     ResponseEntity<DespesaDto> create(@RequestBody DespesaDto model) {
         try {
-            DespesaModel created = despesaService.create(model);
+            Despesa created = despesaService.create(model);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{id}")
                     .buildAndExpand(created.getId())
