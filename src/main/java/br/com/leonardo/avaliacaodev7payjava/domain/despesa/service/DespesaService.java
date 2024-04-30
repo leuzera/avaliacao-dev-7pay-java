@@ -49,4 +49,8 @@ public class DespesaService {
         List<DespesaModel> despesaModelStream = dtoList.stream().map(DespesaDto::toEntity).toList();
         return despesaRepository.saveAll(despesaModelStream).size();
     }
+
+    public void deleteAll() {
+        despesaRepository.deleteAll();
+    }
 }
