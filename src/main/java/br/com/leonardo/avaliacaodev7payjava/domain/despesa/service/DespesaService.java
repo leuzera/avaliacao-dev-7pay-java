@@ -44,4 +44,9 @@ public class DespesaService {
         Optional<DespesaModel> despesa = despesaRepository.findById(id);
         return despesa.orElseThrow();
     }
+
+    public Integer createAll(List<DespesaDto> dtoList) {
+        List<DespesaModel> despesaModelStream = dtoList.stream().map(DespesaDto::toEntity).toList();
+        return despesaRepository.saveAll(despesaModelStream).size();
+    }
 }
