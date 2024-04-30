@@ -1,9 +1,12 @@
 package br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Table
+@Table(name = "despesa")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
