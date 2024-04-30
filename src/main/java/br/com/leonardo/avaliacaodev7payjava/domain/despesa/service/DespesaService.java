@@ -4,6 +4,7 @@ import br.com.leonardo.avaliacaodev7payjava.domain.despesa.repository.DespesaRep
 import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaDto;
 import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaModel;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,8 +37,8 @@ public class DespesaService {
         despesaRepository.delete(despesa.orElseThrow());
     }
 
-    public List<DespesaModel> findAll() {
-        return despesaRepository.findAll();
+    public List<DespesaModel> findAll(Pageable paging) {
+        return despesaRepository.findAll(paging).toList();
     }
 
     public DespesaModel findById(Integer id) {

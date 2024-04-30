@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -61,7 +62,7 @@ class DespesaServiceTest {
         DespesaModel model3 = DespesaModel.builder().build();
         despesaService.create(model3.toDto());
 
-        List<DespesaModel> found = despesaService.findAll();
+        List<DespesaModel> found = despesaService.findAll(Pageable.unpaged());
 
         assertEquals(3, found.size());
     }

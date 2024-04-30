@@ -3,6 +3,9 @@ package br.com.leonardo.avaliacaodev7payjava.application.despesa;
 import br.com.leonardo.avaliacaodev7payjava.domain.despesa.service.DespesaService;
 import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaDto;
 import br.com.leonardo.avaliacaodev7payjava.infrastructure.despesa.DespesaModel;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,8 +24,15 @@ public class DespesaController {
     }
 
     @GetMapping
-    ResponseEntity<List<DespesaDto>> findAll() {
-        List<DespesaDto> dtoList = despesaService.findAll().stream().map(DespesaModel::toDto).toList();
+    ResponseEntity<List<DespesaDto>> findAll(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "20") Integer limit,
+            @RequestParam(defaultValue = "DESC") Sort.Direction direction,
+            @RequestParam(defaultValue = "id") String[] sortBy
+    ) {
+        Sort sort = Sort.by(direction, sortBy);
+        Pageable paging = PageRequest.of(page, limit, sort);
+        List<DespesaDto> dtoList = despesaService.findAll(paging).stream().map(DespesaModel::toDto).toList();
 
         return ResponseEntity.ok(dtoList);
     }
